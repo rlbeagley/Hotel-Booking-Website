@@ -8,7 +8,7 @@
   <div>
     <h1>Welcome!</h1>
     <h2>Please select your role.</h2>
-    <a href = "customer_login_page.jsp">
+    <a href = "customer_landing_page.jsp">
         <button type = "button">Customer</button>
     </a>
     <a href="employee_login_page.jsp">
