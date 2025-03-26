@@ -1,0 +1,74 @@
+html, body {
+    margin: 0; /* Removes default margins */
+    padding: 0; /* Removes default padding */
+    height: 100%; /* Ensures the page fills the full height */
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between; /* Adjusts content for vertical space */
+}
+
+div {
+    width: 100vw;
+    height: 100vh;
+}
+
+.welcome-pick-role {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex: 1 1 200px;
+}
+
+.welcome-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.button {
+     margin: 0 20px;
+     background-color: #042304;
+     border: 0px;
+     color: #E4E1D9;
+     font-family: "Instrument Sans";
+     font-size: 30px;
+     font-style: normal;
+     font-weight: 700;
+     padding: 25px 45px;
+     border-radius: 20px;
+
+}
+
+.main-header {
+    color: #042304;
+    font-family: "Instrument Sans";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: -15px;
+}
+
+.index-subheading {
+    color: #042304;
+    font-family: "Instrument Sans";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.buildings {
+    width: 100%;
+    height: auto;
+}
