@@ -9,13 +9,13 @@
 </head>
 <body>
   <div class="welcome-pick-role">
-    <h1 class="main-header">Welcome to our eHotel Management System!</h1>
-    <h2 class ="index-subheading">Please select your role.</h2>
+    <h1 class="main-header welcome-text">Welcome to our eHotel Management System!</h1>
+    <h2 class ="subheading">Please select your role.</h2>
     <div class = "welcome-buttons">
         <a href = "customer_landing_page.jsp">
             <button class = "button" type = "button">Customer</button>
         </a>
-        <a href="employee_login_page.jsp">
+        <a href="employee_landing_page.jsp">
             <button class = "button"type = "button">Employee</button>
         </a>
     </div>
