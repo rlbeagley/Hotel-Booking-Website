@@ -26,13 +26,13 @@ body {
 .welcome-buttons {
     display: flex;
     flex-direction: row;
+    gap: 40px;
     justify-content: center;
     width: 100%;
 
 }
 
 .button {
-     margin: 0 20px;
      background-color: #042304;
      border: 0px;
      color: #E4E1D9;
@@ -80,4 +80,92 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 30px;
+    min-height: 100vh;
+}
+
+input {
+    width: 40vw;
+    background-color: #C6C1B4;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-size: 15px;
+    color: #042304;
+    margin-bottom: 20px;
+
+}
+
+
+
+select {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #C6C1B4;
+  font-family: "Instrument Sans";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #042304;
+  appearance: none;
+  padding-right: 20px;
+  background-image: url('media/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: right -9px center;
+  background-size: 80px;
+  margin-bottom: 20px;
+}
+
+label {
+    color: #042304;
+    font-family: "Instrument Sans";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.side-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 40px;
+}
+
+.new-subheading {
+     color: #042304;
+     font-family: "Instrument Sans";
+     font-size: 40px;
+     font-style: normal;
+     font-weight: 700;
+
+}
+
+.less-header {
+    color: #042304;
+    font-family: "Instrument Sans";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    padding: 30px;
+    margin: 40px;
+    border-radius: 20px;
+    background: #E4E1D9;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

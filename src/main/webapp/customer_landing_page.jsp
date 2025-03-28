@@ -31,27 +31,24 @@
                     <option value="suite">Suite</option>
                 </select><br>
 
-                <div id="price_ranges">
-                    <h3>Price range</h3>
 
-                    <label for="minprice">Min</label><br>
-                    <input type="number" id="minprice" name="minprice" min="0" step="0.01" required><br>
+                <label for="minprice">Min Price</label><br>
+                <input type="number" id="minprice" name="minprice" min="0" step="0.01" required><br>
 
-                    <label for="maxprice">Max</label><br>
-                    <input type="number" id="maxprice" name="maxprice" min="0" step="0.01" required><br>
-                </div>
+                <label for="maxprice">Max Price</label><br>
+                <input type="number" id="maxprice" name="maxprice" min="0" step="0.01" required><br>
 
 
 
             </form>
         </div>
         <div class="side-container">
-            <h1 class="main-header">Ready to book a place?</h1>
-            <h2 class="subheading">Please select your requirements for your upcoming stay</h2>
+            <h1 class="less-header">Ready to book a place?</h1>
+            <h2 class="new-subheading">Please select your requirements for your upcoming stay.</h2>
 
             <!-- need to incorporate backend code for queries, collecting info from form when button pressed
              temporarily just takes you to the next page-->
-             <button class = "button" type = "submit" form="search-hotels-form" >Search</button>
+            <button class = "button" type = "submit" form="search-hotels-form" >Search</button>
         </div>
     </div>
 
