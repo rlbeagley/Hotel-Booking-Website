@@ -15,8 +15,8 @@ public class roomService {
 
             //different method calls. not sure if they need to be commented out
 
-            //filter(210.0,400.0,"Ottawa","double",Date.valueOf("2022-10-12"));
-            availability("Toronto", Date.valueOf("2022-10-11"));
+            //filter(210.0,400.0,"Ottawa","double",Date.valueOf("2022-10-12"),Date.valueOf("2022-10-13"));
+            //availability("Toronto", Date.valueOf("2022-10-11"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -119,8 +119,8 @@ public class roomService {
 
 
     //beefy method to take a bunch of filters and look for all rooms that match and add them to a list
-    public static List<room> filter(Double minPrice, Double maxPrice, String city, String capacity, Date arrival_date) throws Exception{
-        String sql = "SELECT r.*,h.city, b.arrival_date FROM room r JOIN hotel h ON r.hotel_id = h.hotel_id LEFT JOIN booking b ON r.room_num = b.room_num AND r.hotel_id = b.hotel_id;";
+    public static List<room> filter(Double minPrice, Double maxPrice, String city, String capacity, Date arrival_date, Date leave_date) throws Exception{
+        String sql = "SELECT r.*,h.city, b.arrival_date, b.leave_date FROM room r JOIN hotel h ON r.hotel_id = h.hotel_id LEFT JOIN booking b ON r.room_num = b.room_num AND r.hotel_id = b.hotel_id;";
         db_connection db = new db_connection();
         List<room> rooms = new ArrayList<>();
 
@@ -129,23 +129,30 @@ public class roomService {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
+                //set dates to variables for simplicity
                 Date bookedDate = rs.getDate("arrival_date");
+                Date bookedLeave = rs.getDate("leave_date");
 
-                if (rs.getDate("arrival_date")==arrival_date){
-                    System.out.println("not date");
+                //this is a silly solution to arrival date being null on most rooms
+                if(bookedDate==null){
+                    bookedDate=Date.valueOf("1900-10-11");
+                    bookedLeave=Date.valueOf("1900-10-12");
                 }
 
+                //check all the user entered filters
                 if(((rs.getDouble("price")>=minPrice)
                         && (rs.getDouble("price")<=maxPrice)
                         && (rs.getString("capacity").equals(capacity))
                         && (rs.getString("city").equals(city)))
 
-                        && (bookedDate==null || !(bookedDate.equals(arrival_date)))
-                ){
+                        //if the booking's leave date is earlier than the planned arrival date or the planned leave date
+                        //is after the bookings arrival date
+                        && ((bookedLeave.before(arrival_date) || leave_date.after(bookedDate)))
 
-
+                ) {
                     System.out.println("adding!");
                     System.out.println(rs.getInt("room_num"));
+                    //create room object to add to the array
                     room room = new room(
                             rs.getInt("room_num"),
                             rs.getInt("hotel_id"),

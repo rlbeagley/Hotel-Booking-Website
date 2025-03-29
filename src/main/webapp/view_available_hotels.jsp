@@ -1,3 +1,28 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.demo.roomService" %>
+<%@ page import="com.demo.room" %>
+<%@ page import="java.sql.Date" %>
+
+
+<%
+
+    String area = request.getParameter("area");
+    String capacity = request.getParameter("capacity");
+    String minPriceStr = request.getParameter("minprice");
+    String maxPriceStr = request.getParameter("maxprice");
+    String checkInStr = request.getParameter("cin");
+        String checkOutStr = request.getParameter("cout");
+
+
+        double minPrice = Double.parseDouble(minPriceStr);
+        double maxPrice = Double.parseDouble(maxPriceStr);
+        Date checkIn = Date.valueOf(checkInStr);
+        Date checkOut = Date.valueOf(checkOutStr);
+
+    List<room> rooms = roomService.filter(minPrice, maxPrice, area, capacity, checkIn, checkOut);
+
+%>
+
 <html>
 <head>
     <meta charset="UTF-8">

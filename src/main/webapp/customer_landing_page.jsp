@@ -20,7 +20,7 @@
                 <!-- need to change, this is temp
                 options should be all areas in db -->
                 <select name="area" id="area">
-                    <option value="bikinibottom">Bikini Bototm</option>
+                    <option value="Bikini Bottom">Bikini Bottom</option>
                 </select><br>
 
                 <label for= "capacity">Capacity</label><br>
