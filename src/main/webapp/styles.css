@@ -82,6 +82,7 @@ body {
     align-items: center;
     gap: 30px;
     min-height: 100vh;
+    width: 100%;
 }
 
 .container input {
@@ -279,7 +280,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .star {
-    width: 1.2vw;
+    width: 1.5vw;
     height: auto;
     margin-right: 3px;
     margin-left: 3px;
@@ -386,4 +387,33 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.side-container .room-info-block {
+    display: flex;
+        background-color:  #E4E1D9;
+        padding: 30px;
+        border-radius: 20px;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.side-container .left-side {
+   display: grid;
+   grid-template-columns: 1fr auto;
+   grid-template-rows: auto auto auto
+   gap: 5px;
+   width: 60%
+
+}
+
+.side-container .less-header {
+    color: #042304;
+    font-family: "Instrument Sans";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
 }
