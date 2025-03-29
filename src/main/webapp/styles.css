@@ -84,7 +84,7 @@ body {
     min-height: 100vh;
 }
 
-input {
+.container input {
     width: 40vw;
     background-color: #C6C1B4;
     padding: 12px 20px;
@@ -102,7 +102,9 @@ input {
 
 
 
-select {
+
+
+.container select {
   width: 100%;
   padding: 12px 20px;
   border: none;
@@ -123,7 +125,7 @@ select {
   margin-bottom: 20px;
 }
 
-label {
+.container label {
     color: #042304;
     font-family: "Instrument Sans";
     font-size: 25px;
@@ -160,7 +162,7 @@ label {
 
 form {
     padding: 30px;
-    margin: 40px;
+    margin: 60 40px;
     border-radius: 20px;
     background: #E4E1D9;
 }
@@ -168,4 +170,220 @@ form {
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.row-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    width: 100%
+    justify-content: space-around;
+}
+
+#second-search {
+     display: flex;
+     flex-direction: column;
+     width: 90vw;
+     align-items: center;
+}
+
+#second-search label {
+    color: #042304;
+    font-family: "Instrument Sans";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+}
+#second-search input {
+     background-color: #C6C1B4;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        font-family: "Instrument Sans";
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        font-size: 15px;
+        color: #042304;
+        margin-bottom: 20px;
+        width: 12vw;
+}
+
+#second-search select {
+     width: 12vw;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #C6C1B4;
+      font-family: "Instrument Sans";
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      color: #042304;
+      appearance: none;
+      padding-right: 20px;
+      background-image: url('media/arrow.svg');
+      background-repeat: no-repeat;
+      background-position: right -9px center;
+      background-size: 80px;
+      margin-bottom: 20px;
+}
+
+#second-search input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 20px;
+    padding: 11px 20px;
+}
+
+#second-search button {
+    width: auto;
+    padding: 5px 20px;
+    font-size: 25px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+
+}
+.input-block {
+    display:flex;
+    flex-direction: column;
+}
+
+.room-info-block {
+    display: flex;
+    background-color:  #E4E1D9;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+}
+
+.star {
+    width: 1.2vw;
+    height: auto;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+
+
+.room-info-block h1,
+.room-info-block h2,
+.room-info-block h3 {
+    margin: 0;
+    padding: 0;
+    color: #042304;
+}
+
+.room-info-block h1 {
+    font-family: "Instrument Sans";
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.room-info-block h2 {
+    font-family: "Instrument Sans";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.room-info-block h3 {
+    font-family: "Instrument Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+.room-info {
+    margin-left: 20px;
+}
+
+.left-side {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto
+    gap: 5px;
+    width: 40%
+
+}
+
+.hotel-name {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    padding-right: 20px;
+}
+
+.rating {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+}
+.street-address {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+}
+.point-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.room-number {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+}
+
+.room-info {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #042304;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.book-now {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

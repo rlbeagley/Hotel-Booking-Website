@@ -10,7 +10,7 @@
 <body>
     <div class = "container">
         <div>
-            <form id="search-hotels-form" action="book_stay.jsp">
+            <form id="search-hotels-form" action="view_available_hotels.jsp">
                 <label for="cin">Check-in</label><br>
                 <input type="date" id="cin" name="cin"><br>
                 <label for="cout">Check-in</label><br>
@@ -23,7 +23,7 @@
                     <option value="bikinibottom">Bikini Bototm</option>
                 </select><br>
 
-                <label for "capacity">Capacity</label><br>
+                <label for= "capacity">Capacity</label><br>
                 <select name = "capacity" id="capacity">
                     <option value="single">Single(1)</option>
                     <option value="double">Double(2)</option>
