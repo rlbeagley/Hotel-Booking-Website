@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="rows">
-        <form id="second-search" action="book_stay.jsp">
+        <form id="second-search" action="view_available_hotels.jsp">
             <div class="row-container">
 
                 <div class="input-block">
