@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class = "container">
-        <div>
             <form id="employee-hotel">
+                <h1 class="main-header"> Select your location.</h1>
                 <label for="hotel">Hotel Chain</label><br>
                 <select name="hotel" id="hotel">
                     <!-- get from DB, this is temporary-->
@@ -26,7 +26,6 @@
                 <button class = "button" type = "submit" formaction="employee_bookings.jsp" >View Bookings</button>
                 <button class = "button" type = "submit" formaction="employee_rentings.jsp" >View Rentings</button>
             </form>
-        </div>
     </div>
 
 </body>

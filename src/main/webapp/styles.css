@@ -334,6 +334,24 @@ input[type="number"]::-webkit-inner-spin-button {
 
 }
 
+.mygrid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 5px;
+    width: 93%;
+    margin-top: 20px;
+}
+
+.top-left {
+    grid-column: 1;
+    justify-self: start;
+}
+
+.top-right{
+    grid-column: 2;
+    justify-self:end;
+}
+
 .hotel-name {
     grid-column: 1;
     grid-row: 1;
@@ -416,4 +434,22 @@ input[type="number"]::-webkit-inner-spin-button {
     font-weight: 700;
     margin: 0;
     padding: 0;
+}
+
+
+.booking-buttons {
+  display: flex;
+  justify-content: flex-end; /* Aligns items to the right */
+  gap: 10px; /* Adds space between the buttons */
+}
+.booking-buttons button {
+    margin:  0px;
+}
+
+.rows .room-info-block{
+     display: flex;
+     background-color:  #E4E1D9;
+     padding: 10 30px;
+     border-radius: 20px;
+     width: 90vw;
 }
