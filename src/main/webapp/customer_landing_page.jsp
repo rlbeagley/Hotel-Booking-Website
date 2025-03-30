@@ -12,9 +12,9 @@
         <div>
             <form id="search-hotels-form" action="view_available_hotels.jsp">
                 <label for="cin">Check-in</label><br>
-                <input type="date" id="cin" name="cin"><br>
+                <input type="date" id="cin" name="cin" required><br>
                 <label for="cout">Check-in</label><br>
-                <input type="date" id="cout" name="cout"><br>
+                <input type="date" id="cout" name="cout" required><br>
                 <label for="area">Area</label><br>
 
                 <!-- need to change, this is temp

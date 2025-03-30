@@ -12,13 +12,13 @@
         <div>
             <form id="booking-form" action="confirmed_booking.jsp">
                 <label for="name">Full Name</label><br>
-                <input type="text" id="name" name="name"><br>
+                <input type="text" id="name" name="name" required><br>
 
                 <label for="idnum">SIN or Other ID</label><br>
-                <input type="number" id="idnum" name="idnum"><br>
+                <input type="number" id="idnum" name="idnum" required><br>
 
                 <label for="address">Address</label><br>
-                <input type="text" id="address" name="address"><br>
+                <input type="text" id="address" name="address" required><br>
 
             </form>
         </div>
