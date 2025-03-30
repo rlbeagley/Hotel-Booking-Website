@@ -1,9 +1,6 @@
 package com.demo;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +11,10 @@ public class roomService {
         try{
 
             //different method calls. not sure if they need to be commented out
+
+            deleteRoom(100,3);
+            insertRoom(100,3,200.0,"double","none",true);
+            updateRoom(100,3,250.0,"double","mountain",true);
 
             //filter(210.0,400.0,"Ottawa","double",Date.valueOf("2022-10-12"),Date.valueOf("2022-10-13"));
             //availability("Toronto", Date.valueOf("2022-10-11"));
@@ -176,6 +177,76 @@ public class roomService {
         }
     }
 
+
+    public static void deleteRoom(int room_num, int hotel_id) throws Exception{
+        String sql = "DELETE FROM room WHERE room_num='"+room_num+"' AND hotel_id='"+hotel_id+"'";
+        //instance of db_connection
+        db_connection db = new db_connection();
+
+        //can the connection method in db_connection
+        try (Connection con = db.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+            System.out.println("Deleted Room!");
+            stmt.close();
+            con.close();
+            db.close();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static void insertRoom(int room_num, int hotel_id, double price, String capacity, String view_type, Boolean can_extend) throws Exception{
+
+
+        String updateSQL =
+                "INSERT INTO room(room_num,hotel_id,price,capacity,view_type,can_extend) " +
+                        "VALUES ('"+room_num+"','"+hotel_id+"','"+price+"','"+capacity+"','"+view_type+"','"+can_extend+"')";
+
+        //instance of db_connection
+        db_connection db = new db_connection();
+
+        //can the connection method in db_connection
+        try (Connection con = db.getConnection()){
+            PreparedStatement update = con.prepareStatement(updateSQL);
+
+            update.executeUpdate();
+            System.out.println("Inserted Room!");
+
+            update.close();
+            con.close();
+            db.close();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+
+    }
+
+    public static void updateRoom(int room_num, int hotel_id, double price, String capacity, String view_type, Boolean can_extend) throws Exception{
+        String updateSQL = "UPDATE room " +
+                "SET price = '"+price+"', " +
+                "capacity = '"+capacity+"', " +
+                "view_type = '"+view_type+"', " +
+                "can_extend = '"+can_extend+"' " +
+                "WHERE room_num = '"+room_num+"' AND hotel_id = '"+hotel_id+"';";
+
+        //instance of db_connection
+        db_connection db = new db_connection();
+
+        //can the connection method in db_connection
+        try (Connection con = db.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(updateSQL);
+            stmt.executeUpdate();
+
+            System.out.println("Updated Room!");
+
+            stmt.close();
+            con.close();
+            db.close();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 
 
 

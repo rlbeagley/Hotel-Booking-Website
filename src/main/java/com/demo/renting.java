@@ -1,6 +1,7 @@
 package com.demo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class renting {
 
@@ -8,10 +9,10 @@ public class renting {
     private int room_num;
     private int hotel_id;
     private int id;
-    private Date check_out;
-    private Date check_in;
+    private Timestamp check_out;
+    private Timestamp check_in;
 
-    public renting(int room_num, int hotel_id, int id, Date check_in, Date check_out){
+    public renting(int room_num, int hotel_id, int id, Timestamp check_in, Timestamp check_out){
         this.room_num= room_num;
         this.hotel_id = hotel_id;
         this.id = id;
@@ -32,11 +33,11 @@ public class renting {
         return this.id;
     }
 
-    public Date getcheckIn(){
+    public Timestamp getcheckIn(){
         return this.check_in;
     }
 
-    public Date getcheckOut(){
+    public Timestamp getcheckOut(){
         return this.check_out;
     }
 }
