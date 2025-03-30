@@ -47,10 +47,6 @@
                 anyways add that, rn its just placeholders
                 -->
                 <form class="changes"action="employee_rentings.jsp"> <!-- i hope this refreshes-->
-                    <div class="input-block">
-                        <label for="checkout">Set Checkout Time</label>
-                        <input type="time" id="checkout" name="checkout">
-                    </div>
 
                     <div class="input-block">
                         <label for="arrival">Change Arrival Date</label>

@@ -10,21 +10,30 @@
 <body>
     <div class = "container">
             <form id="employee-hotel">
-                <h1 class="main-header"> Select your location.</h1>
-                <label for="hotel">Hotel Chain</label><br>
-                <select name="hotel" id="hotel">
+                <h1 class="main-header">Employee Login</h1>
+                <label for="hotelid">Hotel ID</label><br>
+                <select name="hotelid" id="hotelid">
                     <!-- get from DB, this is temporary-->
-                    <option value="marriot">Marriot</option>
+                    <option value="1">1</option>
                 </select><br>
 
-                <label for="area">Area</label><br>
-                <select name="area" id="area">
-                    <!-- get from DB, this is temporary-->
-                    <option value="ottawa">Ottawa</option>
-                </select><br>
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name"><br>
 
-                <button class = "button" type = "submit" formaction="employee_bookings.jsp" >View Bookings</button>
-                <button class = "button" type = "submit" formaction="employee_rentings.jsp" >View Rentings</button>
+                <label for="sin">SIN</label><br>
+                <input type="number" id="sin" name="sin"><br>
+
+                <label for="address">Address</label><br>
+                <input type="text" id="address" name="address"><br>
+
+
+                <!-- these buttons hopefully can do both things?
+                1. login and 2. redirect to page based on hotel ID -->
+
+                <div class="login-buttons">
+                    <button class = "button" type = "submit" formaction="employee_bookings.jsp" >View Bookings</button>
+                    <button class = "button" type = "submit" formaction="employee_rentings.jsp" >View Rentings</button>
+                </div>
             </form>
     </div>
 

@@ -537,3 +537,14 @@ input[type="number"]::-webkit-inner-spin-button {
             margin-bottom: 20px;
             width: 12vw;
 }
+
+input[type="checkbox"] {
+    display: block;
+    margin: auto; /* Centers it horizontally */
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
