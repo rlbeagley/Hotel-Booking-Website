@@ -23,37 +23,53 @@
         this is actually the booking-info blocks-->
         <div class = "room-info-block">
             <div class="info-text">
+
                 <h1>Room 000</h1>
                 <h2>Customer ID: 123456789</h2>
                 <h2>Hotel ID: 0000200</h2>
-                <div class="room-info">
-                   <div class="point-item">
-                        <span class="bullet"></span>
-                        <h3>Check in: 00/00/0000</h3>
-                   </div>
-                   <div class="point-item">
-                        <span class="bullet"></span>
-                        <h3>Check out: 00/00/0000</h3>
-                   </div>
+                <h3>Check in: 00/00/0000</h3>
+                <h3>Check out: 00/00/0000</h3>
 
-                </div>
+
+
             </div>
             <div class="booking-buttons">
+                <div class="annoying-buttons">
+                    <form>
+                        <input type="hidden" name="required-info" value="from-db">
+                        <button class="button" type="submit" >Delete</button>
+                    </form>
+                    <form>
+                        <input type="hidden" name="required-info" value="from-db">
+                        <button class="button" type="submit" >Make Into Renting</button>
+
+                    </form>
+                </div>
                 <!-- INCOMPLETE
                 need to add more hidden input types that will submit info of the booking that should be deleted,
                 assuming we can fill these with info from the DB?
                 hopefully
                 anyways add that, rn its just placeholders
                 -->
-                <form>
-                    <input type="hidden" name="required-info" value="from-db">
-                    <button class="button" type="submit" >Delete</button>
-                </form>
-                <form>
-                    <input type="hidden" name="required-info" value="from-db">
-                    <button class="button" type="submit" >Make Into Renting</button>
+                <form class="changes"action="employee_bookings.jsp"> <!-- i hope this refreshes-->
+                    <div class="input-block">
+                        <label for="checkout">Set Checkout Time</label>
+                        <input type="time" id="checkout" name="checkout">
+                    </div>
 
+                    <div class="input-block">
+                        <label for="arrival">Change Arrival Date</label>
+                        <input type="date" id="arrival" name="arrival">
+                    </div>
+
+                    <div class="input-block">
+                        <label for="leave">Change Leave Date</label>
+                        <input type="date" id="leave" name="leave">
+                    </div>
+
+                    <button class="button" type="submit" >Submit Changes</button>
                 </form>
+
             </div>
         </div>
     </div>
