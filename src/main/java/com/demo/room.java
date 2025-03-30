@@ -12,10 +12,11 @@ public class room {
     private String city;
     private String hotel_name;
     private String address;
+    private double price;
 
 
     //constructor
-    public room(int room_num, int hotel_id, String capacity, String view_type, Boolean can_extend, String city, int rating, String hotel_name, String address){
+    public room(int room_num, int hotel_id, String capacity, String view_type, Boolean can_extend, String city, int rating, String hotel_name, String address, double price){
         this.room_num= room_num;
         this.hotel_id = hotel_id;
         this.capacity = capacity;
@@ -25,12 +26,18 @@ public class room {
         this.rating = rating;
         this.hotel_name = hotel_name;
         this.address = address;
+        this.price= price;
     }
 
     //getters/setters
     public String getAddress() {
         return this.address;
     }
+
+    public double getPrice() {
+        return this.price;
+    }
+
     public int getRoomNum() {
         return this.room_num;
     }
@@ -98,9 +105,14 @@ public class room {
         this.hotel_name = hotel_name;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     //tostring
     @Override
     public String toString(){
         return Integer.toString(room_num);
     }
+
 }

@@ -163,7 +163,8 @@ public class roomService {
                             rs.getString("city"),
                             rs.getInt("rating"),
                             rs.getString("chain_name"),
-                            rs.getString("address")
+                            rs.getString("address"),
+                            rs.getDouble("price")
                     );
                     rooms.add(room);
                 }

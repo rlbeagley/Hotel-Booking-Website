@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.demo.roomService" %>
 <%@ page import="com.demo.room" %>
+<%@ page import="com.demo.hotelService" %>
 <%@ page import="java.sql.Date" %>
 
 
@@ -20,6 +21,7 @@
         Date checkOut = Date.valueOf(checkOutStr);
 
     List<room> rooms = roomService.filter(minPrice, maxPrice, area, capacity, checkIn, checkOut);
+    List<String> cities = hotelService.cities();
 
 %>
 
@@ -34,86 +36,96 @@
 </head>
 <body>
     <div class="rows">
-        <form id="second-search" action="view_available_hotels.jsp">
+        <form id="second-search" action="view_available_hotels.jsp" method="GET">
             <div class="row-container">
 
                 <div class="input-block">
                     <label for="cin">Check-in</label>
-                    <input type="date" id="cin" name="cin">
+                    <input type="date" id="cin" name="cin" value= "<%= checkInStr %>">
                 </div>
 
                 <div class="input-block">
                     <label for="cout">Check-out</label>
-                    <input type="date" id="cout" name="cout">
+                    <input type="date" id="cout" name="cout" value= "<%= checkOutStr %>">
                 </div>
+
+                <!-- need the method that gets all areas -->
 
                 <div class="input-block">
                     <label for="area">Area</label>
                     <select name="area" id="area">
-                        <option value="bikinibottom">Bikini Bottom</option>
+                        <% for (String city : cities) { %>
+                            <option value= "<%= city %>"><%= city %></option>
+                        <% } %>
                     </select>
                 </div>
+
 
                 <div class="input-block">
                     <label for="capacity">Capacity</label>
                     <select name="capacity" id="capacity">
-                        <option value="single">Single(1)</option>
-                        <option value="double">Double(2)</option>
-                        <option value="family">Family(4)</option>
-                        <option value="suite">Suite</option>
+                        <option value="single" <%= "single".equals(capacity) ? "selected" : "" %>>Single(1)</option>
+                        <option value="double" <%= "double".equals(capacity) ? "selected" : "" %>>Double(2)</option>
+                        <option value="family" <%= "family".equals(capacity) ? "selected" : "" %>>Family(4)</option>
+                        <option value="suite" <%= "suite".equals(capacity) ? "selected" : "" %>>Suite</option>
                     </select>
                 </div>
 
                 <div class="input-block">
                     <label for="minprice">Min Price</label>
-                    <input type="number" id="minprice" name="minprice" min="0" step="0.01" required>
+                    <input type="number" id="minprice" name="minprice" min="0" step="0.01" value= "<%= minPriceStr %>" required>
                 </div>
 
                 <div class="input-block">
                     <label for="maxprice">Max Price</label>
-                    <input type="number" id="maxprice" name="maxprice" min="0" step="0.01" required>
+                    <input type="number" id="maxprice" name="maxprice" min="0" step="0.01" value= "<%= maxPriceStr %>" required>
                 </div>
 
-                <button class = "button" type = "submit" form="search-hotels-form" >Search</button>
+                <button class = "button" type = "submit" form="second-search" >Search</button>
 
             </div>
         </form>
-
+        <% if (rooms.size() == 0) { %>
+        <h1 class="main-header">No Rooms Found</h1> <% } else { %>
+        <% for (room r : rooms) { %>
         <div class = "room-info-block">
-            <div class="left-side">
-                <h1 class="hotel-name">Hotel Name</h1>
-                <div class="rating">
-                    <img class="star" src="media/star.svg" alt="star">
-                    <h1>3</h1>
+                <div class="left-side">
+                    <h1 class="hotel-name"><%= r.getHotelName() %></h1>
+                    <div class="rating">
+                        <img class="star" src="media/star.svg" alt="star">
+                        <h1><%= r.getRating() %></h1>
+                    </div>
+
+                    <h2 class="street-address"><%= r.getAddress()%></h2>
+                    <h2 class="room-number"><%= "Room " + r.getRoomNum() %></h2>
+
+
+                    <div class="room-info">
+                       <div class="point-item">
+                            <span class="bullet"></span>
+                            <h3><%= "View type: "+ r.getViewType() %></h3>
+                       </div>
+                       <div class="point-item">
+                            <span class="bullet"></span>
+                            <h3><%= "Extendable: "+ r.getCanExtend() %></h3>
+                       </div>
+                       <!--<div class="point-item">
+                            <span class="bullet"></span>
+                            <h3>Point</h3>
+                       </div>-->
+                    </div>
+                </div>
+                <div class="book-now">
+                    <h1><%= "$" + r.getPrice() %></h1>
+                    <!-- need to change so that info is sent-->
+                    <a href ="book_stay.jsp">
+                        <button class="button">Book now</button>
+                    </a>
                 </div>
 
-                <h2 class="street-address">123 Street Street</h2>
-                <h2 class="room-number">Room 201</h2>
-
-
-                <div class="room-info">
-                   <div class="point-item">
-                        <span class="bullet"></span>
-                        <h3>Point</h3>
-                   </div>
-                   <div class="point-item">
-                        <span class="bullet"></span>
-                        <h3>Point</h3>
-                   </div>
-                   <div class="point-item">
-                        <span class="bullet"></span>
-                        <h3>Point</h3>
-                   </div>
-                </div>
-            </div>
-            <div class="book-now">
-                <h1>$130.00</h1>
-                <!-- need to change so that info is sent-->
-                <a href ="book_stay.jsp">
-                    <button class="button">Book now</button>
-                </a>
-            </div>
         </div>
+        <% } %>
+        <% } %>
     </div>
 </body>
 </html>

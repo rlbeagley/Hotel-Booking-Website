@@ -1,3 +1,9 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.demo.hotelService" %>
+<%@ page import="java.sql.Date" %>
+<%
+    List<String> cities = hotelService.cities();
+%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -10,7 +16,7 @@
 <body>
     <div class = "container">
         <div>
-            <form id="search-hotels-form" action="view_available_hotels.jsp">
+            <form id="search-hotels-form" action="view_available_hotels.jsp"  method="get">
                 <label for="cin">Check-in</label><br>
                 <input type="date" id="cin" name="cin" required><br>
                 <label for="cout">Check-in</label><br>
@@ -20,7 +26,9 @@
                 <!-- need to change, this is temp
                 options should be all areas in db -->
                 <select name="area" id="area">
-                    <option value="Bikini Bottom">Bikini Bottom</option>
+                   <% for (String city : cities) { %>
+                    <option value= "<%= city %>"><%= city %></option>
+                   <% } %>
                 </select><br>
 
                 <label for= "capacity">Capacity</label><br>
