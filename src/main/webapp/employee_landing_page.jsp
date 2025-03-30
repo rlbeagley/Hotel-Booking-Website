@@ -14,7 +14,7 @@
                 <label for="hotelid">Hotel ID</label><br>
                 <select name="hotelid" id="hotelid">
                     <!-- get from DB, this is temporary-->
-                    <option value="1">1</option>
+                    <option value="3">3</option>
                 </select><br>
 
                 <label for="name">Name</label><br>

@@ -519,6 +519,11 @@ input[type="number"]::-webkit-inner-spin-button {
     padding:0;
 }
 
+.info-text {
+    width: 20%;
+
+}
+
 .changes {
     display: flex;
     justify-content: center;

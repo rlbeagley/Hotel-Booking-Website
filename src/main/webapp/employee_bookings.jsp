@@ -39,7 +39,7 @@
                 <h1 class="subheading">Bookings</h1>
             </div>
             <div class="top-right">
-                <a href ="employee_rentings.jsp">
+                <a href ="employee_rentings.jsp?hotelid=<%= hotelid %>">
                     <button class="button">View Rentings</button>
                 </a>
             </div>
@@ -50,7 +50,7 @@
         <% } else { %>
             <% for (booking b : bookings) { %>
                 <div class = "room-info-block">
-                    <div class="left-side">
+                    <div class="info-text">
                             <h1 class="room-num"><%= "Room: "+b.getroomNum() %></h1>
 
                             <h2 class="cust-id" ><%= "Customer ID: "+b.getID()%></h2>

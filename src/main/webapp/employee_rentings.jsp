@@ -32,7 +32,7 @@
                 <h1 class="subheading">Rentings</h1>
             </div>
             <div class="top-right">
-                <a href ="employee_bookings.jsp">
+                <a href ="employee_bookings.jsp?hotelid=<%= hotelid %>">
                     <button class="button">View Bookings</button>
                 </a>
             </div>
@@ -47,8 +47,6 @@
                 <h2>Hotel ID: 0000200</h2>
                 <h3>Check-in: 00/00/0000</h3>
                 <h3>Check-out: 00/00/0000</h3>
-
-
 
             </div>
             <div class="booking-buttons">
