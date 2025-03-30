@@ -24,9 +24,6 @@ public class bookingService {
 
     }
 
-    public void updateBooking(){
-
-    }
 
     public static void deleteBooking(int room_num, int hotel_id, int id) throws Exception{
         String sql = "DELETE FROM booking WHERE room_num='"+room_num+"' AND hotel_id = '"+hotel_id+"' AND id = '"+id+"'";
