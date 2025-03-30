@@ -104,7 +104,7 @@ public class bookingService {
             con.close();
             db.close();
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
 
     }

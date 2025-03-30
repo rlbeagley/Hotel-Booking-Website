@@ -46,7 +46,7 @@ public class customerService {
             db.close();
 
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
 
     }

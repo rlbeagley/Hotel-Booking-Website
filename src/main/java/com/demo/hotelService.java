@@ -1,8 +1,40 @@
 package com.demo;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class hotelService {
+
+
+    public static List<String> cities() {
+        String sql = "SELECT DISTINCT city FROM hotel";
+
+        List<String> cities = new ArrayList<>();
+        db_connection db = new db_connection();
+
+        try (Connection con = db.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                cities.add(rs.getString("city"));
+            }
+
+            System.out.println(cities);
+
+
+
+            stmt.close();
+            con.close();
+            db.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return cities;
+    }
+
+
 
     public static void deleteHotel(int hotel_id) throws Exception {
         String sql = "DELETE FROM hotel WHERE hotel_id='" + hotel_id + "'";

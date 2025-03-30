@@ -1,3 +1,28 @@
+<%@ page import ="java.sql.Date" %>
+<%@ page import ="java.sql.Date" %>
+<%@ page import ="com.demo.bookingService" %>
+<%@ page import ="com.demo.customerService" %>
+
+<%
+try{
+    int roomNum = Integer.parseInt(request.getParameter("room_num"));
+    int hotelID = Integer.parseInt(request.getParameter("hotel_id"));
+    int ID = Integer.parseInt(request.getParameter("id"));
+    Date arrivalDate = Date.valueOf(request.getParameter("arrival_date"));
+    Date leaveDate = Date.valueOf(request.getParameter("leave_date"));
+    String name = request.getParameter("name");
+    String address = request.getParameter("address");
+
+    customerService.registration(ID,name,address);
+
+    bookingService.insertBooking(roomNum,hotelID,ID,arrivalDate,leaveDate);
+
+    } catch (Exception e) {
+        out.println("Error: " + e.getMessage());
+    }
+%>
+
+
 <html>
 <head>
     <meta charset="UTF-8">
