@@ -34,6 +34,30 @@ public class hotelService {
         return cities;
     }
 
+    public static List<String> hotels() {
+        String sql = "SELECT hotel_id FROM hotel";
+
+        List<String> hotels = new ArrayList<>();
+        db_connection db = new db_connection();
+
+        try (Connection con = db.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                hotels.add(rs.getString("hotel_id"));
+            }
+
+            System.out.println(hotels);
+
+            stmt.close();
+            con.close();
+            db.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return hotels;
+    }
 
 
     public static void deleteHotel(int hotel_id) throws Exception {

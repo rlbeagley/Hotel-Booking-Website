@@ -1,3 +1,16 @@
+<%@ page import = "com.demo.employeeService"%>
+
+<%
+
+    int id = Integer.parseInt(request.getParameter("sin"));
+    boolean verified = employeeService.employeeVerification(id);
+
+        if (verified ==false) {
+            response.sendRedirect("employee_landing_page.jsp");
+        }
+%>
+
+
 <html>
 <head>
     <meta charset="UTF-8">

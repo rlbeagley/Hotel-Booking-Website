@@ -14,8 +14,8 @@ public class bookingService {
 
             //different method calls. not sure if they need to be commented out
 
-            //deleteBooking(107,3,1);
-            //deleteBooking(107,3,2);
+            deleteBooking(107,3,123456789);
+            deleteBooking(107,3,123456790);
             insertBooking(107,3,123456789,Date.valueOf("2025-03-11"),Date.valueOf("2025-03-12"));
             insertBooking(107,3,123456790,Date.valueOf("2025-03-15"),Date.valueOf("2025-03-16"));
             updateBooking(107,3,123456789,Date.valueOf("2025-03-24"),Date.valueOf("2025-03-25"));

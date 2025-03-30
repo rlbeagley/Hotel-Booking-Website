@@ -151,8 +151,8 @@ public class roomService {
                         && ((bookedLeave.before(arrival_date) || leave_date.after(bookedDate)))
 
                 ) {
-                    System.out.println("adding!");
-                    System.out.println(rs.getInt("room_num"));
+                    //System.out.println("adding!");
+                    //System.out.println(rs.getInt("room_num"));
                     //create room object to add to the array
                     room room = new room(
                             rs.getInt("room_num"),
