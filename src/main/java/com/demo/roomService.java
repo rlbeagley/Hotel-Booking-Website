@@ -160,9 +160,10 @@ public class roomService {
                             rs.getString("capacity"),
                             rs.getString("view_type"),
                             rs.getBoolean("can_extend"),
-                            rs.getString("chain_name"),
+                            rs.getString("city"),
                             rs.getInt("rating"),
-                            rs.getString("city")
+                            rs.getString("chain_name"),
+                            rs.getString("address")
                     );
                     rooms.add(room);
                 }

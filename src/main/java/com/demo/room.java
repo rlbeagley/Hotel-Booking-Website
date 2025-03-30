@@ -11,10 +11,11 @@ public class room {
     private int rating;
     private String city;
     private String hotel_name;
+    private String address;
 
 
     //constructor
-    public room(int room_num, int hotel_id, String capacity, String view_type, Boolean can_extend, String city, int rating, String hotel_name){
+    public room(int room_num, int hotel_id, String capacity, String view_type, Boolean can_extend, String city, int rating, String hotel_name, String address){
         this.room_num= room_num;
         this.hotel_id = hotel_id;
         this.capacity = capacity;
@@ -23,9 +24,13 @@ public class room {
         this.city = city;
         this.rating = rating;
         this.hotel_name = hotel_name;
+        this.address = address;
     }
 
     //getters/setters
+    public String getAddress() {
+        return this.address;
+    }
     public int getRoomNum() {
         return this.room_num;
     }
@@ -58,6 +63,9 @@ public class room {
         return this.hotel_name;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
     public void setRoomNum(int room_num) {
         this.room_num = room_num;
     }
