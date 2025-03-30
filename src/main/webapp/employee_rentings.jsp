@@ -27,8 +27,8 @@
                 <h1>Room 000</h1>
                 <h2>Customer ID: 123456789</h2>
                 <h2>Hotel ID: 0000200</h2>
-                <h3>Arrive: 00/00/0000</h3>
-                <h3>Leave: 00/00/0000</h3>
+                <h3>Check-in: 00/00/0000</h3>
+                <h3>Check-out: 00/00/0000</h3>
 
 
 
@@ -49,13 +49,13 @@
                 <form class="changes"action="employee_rentings.jsp"> <!-- i hope this refreshes-->
 
                     <div class="input-block">
-                        <label for="arrival">Change Arrival Date</label>
-                        <input type="date" id="arrival" name="arrival">
+                        <label for="checkin">Change Check-in</label>
+                        <input type="date" id="checkin" name="checkin">
                     </div>
 
                     <div class="input-block">
-                        <label for="leave">Change Leave Date</label>
-                        <input type="date" id="leave" name="leave">
+                        <label for="checkout">Change Check-out</label>
+                        <input type="date" id="checkout" name="checkout">
                     </div>
 
                     <button class="button" type="submit" >Submit Changes</button>

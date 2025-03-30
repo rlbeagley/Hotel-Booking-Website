@@ -27,8 +27,8 @@
                 <h1>Room 000</h1>
                 <h2>Customer ID: 123456789</h2>
                 <h2>Hotel ID: 0000200</h2>
-                <h3>Check in: 00/00/0000</h3>
-                <h3>Check out: 00/00/0000</h3>
+                <h3>Arrive: 00/00/0000</h3>
+                <h3>Leave: 00/00/0000</h3>
 
 
 
