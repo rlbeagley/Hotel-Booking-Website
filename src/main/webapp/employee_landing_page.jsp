@@ -18,13 +18,13 @@
                 </select><br>
 
                 <label for="name">Name</label><br>
-                <input type="text" id="name" name="name"><br>
+                <input type="text" id="name" name="name" required><br>
 
                 <label for="sin">SIN</label><br>
-                <input type="number" id="sin" name="sin"><br>
+                <input type="number" id="sin" name="sin" required><br>
 
                 <label for="address">Address</label><br>
-                <input type="text" id="address" name="address"><br>
+                <input type="text" id="address" name="address" required><br>
 
 
                 <!-- these buttons hopefully can do both things?

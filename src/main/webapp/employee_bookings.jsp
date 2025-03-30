@@ -1,13 +1,25 @@
 <%@ page import = "com.demo.employeeService"%>
+<%@ page import="java.util.List" %>
+<%@ page import = "com.demo.booking"%>
+<%@ page import = "com.demo.bookingService"%>
 
 <%
+    int hotelid=0;
+    int id =0;
+    if((request.getParameter("hotelid"))!=null){
+        hotelid = Integer.parseInt(request.getParameter("hotelid"));
+    }
 
-    int id = Integer.parseInt(request.getParameter("sin"));
-    boolean verified = employeeService.employeeVerification(id);
+    if((request.getParameter("sin"))!=null){
+            id = Integer.parseInt(request.getParameter("sin"));
+            boolean verified = employeeService.employeeVerification(id);
 
-        if (verified ==false) {
-            response.sendRedirect("employee_landing_page.jsp");
-        }
+                if (verified ==false) {
+                    response.sendRedirect("employee_landing_page.jsp");
+                }
+    }
+
+    List<booking> bookings = bookingService.bookings(hotelid);
 %>
 
 
@@ -32,55 +44,56 @@
                 </a>
             </div>
         </div>
-        <!-- this is the result of me poorly naming classes without considering reusability,
-        this is actually the booking-info blocks-->
-        <div class = "room-info-block">
-            <div class="info-text">
 
-                <h1>Room 000</h1>
-                <h2>Customer ID: 123456789</h2>
-                <h2>Hotel ID: 0000200</h2>
-                <h3>Arrive: 00/00/0000</h3>
-                <h3>Leave: 00/00/0000</h3>
+        <% if (bookings.size() == 0) { %>
+                <h1 class="main-header">No Bookings Found</h1>
+        <% } else { %>
+            <% for (booking b : bookings) { %>
+                <div class = "room-info-block">
+                    <div class="left-side">
+                            <h1 class="room-num"><%= "Room: "+b.getroomNum() %></h1>
 
+                            <h2 class="cust-id" ><%= "Customer ID: "+b.getID()%></h2>
+                            <h2 class="hotel-id"><%= "Hotel ID: " + b.gethotelID() %></h2>
+                            <h3 class= "arrival"><%= "Arrival: "+ b.getarrivalDate() %></h3>
+                            <h3 class= "leave"><%= "Leave: "+ b.getleaveDate() %></h3>
+                    </div>
+                    <div class="booking-buttons">
+                        <div class="annoying-buttons">
+                            <form>
+                                <input type="hidden" name="required-info" value="from-db">
+                                <button class="button" type="submit" >Delete</button>
+                            </form>
+                            <form>
+                                <input type="hidden" name="required-info" value="from-db">
+                                <button class="button" type="submit" >Make Into Renting</button>
 
-
-            </div>
-            <div class="booking-buttons">
-                <div class="annoying-buttons">
-                    <form>
-                        <input type="hidden" name="required-info" value="from-db">
-                        <button class="button" type="submit" >Delete</button>
-                    </form>
-                    <form>
-                        <input type="hidden" name="required-info" value="from-db">
-                        <button class="button" type="submit" >Make Into Renting</button>
-
-                    </form>
-                </div>
+                            </form>
+                    </div>
                 <!-- INCOMPLETE
                 need to add more hidden input types that will submit info of the booking that should be deleted,
                 assuming we can fill these with info from the DB?
                 hopefully
                 anyways add that, rn its just placeholders
                 -->
-                <form class="changes"action="employee_bookings.jsp"> <!-- i hope this refreshes-->
+                    <form class="changes"action="employee_bookings.jsp"> <!-- i hope this refreshes-->
 
-                    <div class="input-block">
-                        <label for="arrival">Change Arrival Date</label>
-                        <input type="date" id="arrival" name="arrival">
-                    </div>
+                        <div class="input-block">
+                            <label for="arrival">Change Arrival Date</label>
+                            <input type="date" id="arrival" name="arrival">
+                        </div>
 
-                    <div class="input-block">
-                        <label for="leave">Change Leave Date</label>
-                        <input type="date" id="leave" name="leave">
-                    </div>
+                        <div class="input-block">
+                            <label for="leave">Change Leave Date</label>
+                            <input type="date" id="leave" name="leave">
+                        </div>
 
-                    <button class="button" type="submit" >Submit Changes</button>
-                </form>
-
+                        <button class="button" type="submit" >Submit Changes</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        <%}%>
+        <%}%>
     </div>
 </body>
 </html>

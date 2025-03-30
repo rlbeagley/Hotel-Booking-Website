@@ -1,13 +1,19 @@
 <%@ page import = "com.demo.employeeService"%>
 
 <%
+    int hotelid=0;
+    int id=0;
+    if((request.getParameter("hotelid"))!=null){
+        hotelid = Integer.parseInt(request.getParameter("hotelid"));
+    }
+    if((request.getParameter("sin"))!=null){
+        id = Integer.parseInt(request.getParameter("sin"));
+        boolean verified = employeeService.employeeVerification(id);
 
-    int id = Integer.parseInt(request.getParameter("sin"));
-    boolean verified = employeeService.employeeVerification(id);
-
-        if (verified ==false) {
-            response.sendRedirect("employee_landing_page.jsp");
-        }
+            if (verified ==false) {
+                response.sendRedirect("employee_landing_page.jsp");
+            }
+    }
 %>
 
 <html>
