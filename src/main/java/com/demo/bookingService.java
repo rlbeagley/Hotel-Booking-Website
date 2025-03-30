@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bookingService {
 
@@ -18,12 +20,50 @@ public class bookingService {
             insertBooking(107,3,2,Date.valueOf("2025-03-15"),Date.valueOf("2025-03-16"));
             updateBooking(107,3,1,Date.valueOf("2025-03-24"),Date.valueOf("2025-03-25"));
             updateBooking(107,3,1,Date.valueOf("2025-03-15"),Date.valueOf("2025-03-16"));
+
+            bookings(3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
 
+
+    public static List<booking> bookings(int hotel_id) throws Exception{
+        String sql = "SELECT * FROM booking WHERE hotel_id = '"+hotel_id+"'";
+
+        db_connection db = new db_connection();
+        List<booking> bookings = new ArrayList<>();
+
+        try (Connection con = db.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                System.out.println("adding!");
+                System.out.println(rs.getInt("room_num"));
+                booking booking = new booking(
+                        rs.getInt("room_num"),
+                        rs.getInt("hotel_id"),
+                        rs.getInt("id"),
+                        rs.getDate("arrival_date"),
+                        rs.getDate("leave_date"));
+                bookings.add(booking);
+            }
+
+
+            System.out.println(bookings);
+
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+            return bookings;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e.getMessage());
+        }
+    }
 
     public static void deleteBooking(int room_num, int hotel_id, int id) throws Exception{
         String sql = "DELETE FROM booking WHERE room_num='"+room_num+"' AND hotel_id = '"+hotel_id+"' AND id = '"+id+"'";
@@ -115,7 +155,8 @@ public class bookingService {
             con.close();
             db.close();
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            System.err.println("Error in updateBooking: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

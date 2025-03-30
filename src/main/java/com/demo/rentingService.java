@@ -1,6 +1,8 @@
 package com.demo;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rentingService {
 
@@ -15,12 +17,50 @@ public class rentingService {
             insertRenting(107,3,2,Timestamp.valueOf("2025-03-15 12:12:12"));
             updateRenting(107,3,1);
             updateRenting(107,3,1);
+
+            rentings(3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
 
+
+    public static List<renting> rentings(int hotel_id) throws Exception{
+        String sql = "SELECT * FROM renting WHERE hotel_id = '"+hotel_id+"'";
+
+        db_connection db = new db_connection();
+        List<renting> rentings = new ArrayList<>();
+
+        try (Connection con = db.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                System.out.println("adding!");
+                System.out.println(rs.getInt("room_num"));
+                renting renting = new renting(
+                        rs.getInt("room_num"),
+                        rs.getInt("hotel_id"),
+                        rs.getInt("id"),
+                        rs.getTimestamp("check_in"),
+                        rs.getTimestamp("check_out"));
+                rentings.add(renting);
+            }
+
+
+            System.out.println(rentings);
+
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+            return rentings;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e.getMessage());
+        }
+    }
 
     public static void deleteRenting(int room_num, int hotel_id, int id) throws Exception{
         String sql = "DELETE FROM Renting WHERE room_num='"+room_num+"' AND hotel_id = '"+hotel_id+"' AND id = '"+id+"'";

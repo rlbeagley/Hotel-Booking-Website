@@ -40,4 +40,8 @@ public class renting {
     public Timestamp getcheckOut(){
         return this.check_out;
     }
+
+    public String toString (){
+        return room_num+","+hotel_id+","+check_in;
+    }
 }
