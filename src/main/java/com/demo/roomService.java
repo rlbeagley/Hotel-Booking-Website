@@ -121,7 +121,7 @@ public class roomService {
 
     //beefy method to take a bunch of filters and look for all rooms that match and add them to a list
     public static List<room> filter(Double minPrice, Double maxPrice, String city, String capacity, Date arrival_date, Date leave_date) throws Exception{
-        String sql = "SELECT r.*,h.city, b.arrival_date, b.leave_date FROM room r JOIN hotel h ON r.hotel_id = h.hotel_id LEFT JOIN booking b ON r.room_num = b.room_num AND r.hotel_id = b.hotel_id;";
+        String sql = "SELECT r.*,h.*, b.arrival_date, b.leave_date FROM room r JOIN hotel h ON r.hotel_id = h.hotel_id LEFT JOIN booking b ON r.room_num = b.room_num AND r.hotel_id = b.hotel_id;";
         db_connection db = new db_connection();
         List<room> rooms = new ArrayList<>();
 
@@ -159,7 +159,11 @@ public class roomService {
                             rs.getInt("hotel_id"),
                             rs.getString("capacity"),
                             rs.getString("view_type"),
-                            rs.getBoolean("can_extend"));
+                            rs.getBoolean("can_extend"),
+                            rs.getString("chain_name"),
+                            rs.getInt("rating"),
+                            rs.getString("city")
+                    );
                     rooms.add(room);
                 }
             }
