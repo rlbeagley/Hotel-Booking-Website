@@ -109,16 +109,13 @@
                             <span class="bullet"></span>
                             <h3><%= "Extendable: "+ r.getCanExtend() %></h3>
                        </div>
-                       <!--<div class="point-item">
-                            <span class="bullet"></span>
-                            <h3>Point</h3>
-                       </div>-->
+
                     </div>
                 </div>
                 <div class="book-now">
                     <h1><%= "$" + r.getPrice() %></h1>
                     <!-- need to change so that info is sent-->
-                    <a href ="book_stay.jsp">
+                    <a href ="book_stay.jsp?room_num=<%= r.getRoomNum() %>&hotel_id=<%= r.getHotelId() %>&arrival_date=<%= checkInStr %>&leave_date=<%= checkOutStr %>&price= <%= r.getPrice() %>&hotel_name= <%= r.getHotelName() %>&hotel_address= <%= r.getAddress()%>&rating= <%= r.getRating() %>">
                         <button class="button">Book now</button>
                     </a>
                 </div>
