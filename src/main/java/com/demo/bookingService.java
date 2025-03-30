@@ -14,12 +14,12 @@ public class bookingService {
 
             //different method calls. not sure if they need to be commented out
 
-            deleteBooking(107,3,1);
-            deleteBooking(107,3,2);
-            insertBooking(107,3,1,Date.valueOf("2025-03-11"),Date.valueOf("2025-03-12"));
-            insertBooking(107,3,2,Date.valueOf("2025-03-15"),Date.valueOf("2025-03-16"));
-            updateBooking(107,3,1,Date.valueOf("2025-03-24"),Date.valueOf("2025-03-25"));
-            updateBooking(107,3,1,Date.valueOf("2025-03-15"),Date.valueOf("2025-03-16"));
+            //deleteBooking(107,3,1);
+            //deleteBooking(107,3,2);
+            insertBooking(107,3,123456789,Date.valueOf("2025-03-11"),Date.valueOf("2025-03-12"));
+            insertBooking(107,3,123456790,Date.valueOf("2025-03-15"),Date.valueOf("2025-03-16"));
+            updateBooking(107,3,123456789,Date.valueOf("2025-03-24"),Date.valueOf("2025-03-25"));
+            updateBooking(107,3,123456789,Date.valueOf("2025-03-15"),Date.valueOf("2025-03-16"));
 
             bookings(3);
         } catch (Exception e) {

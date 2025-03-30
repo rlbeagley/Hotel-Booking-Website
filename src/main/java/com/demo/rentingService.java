@@ -11,12 +11,12 @@ public class rentingService {
 
             //different method calls. not sure if they need to be commented out
 
-            deleteRenting(107,3,1);
-            deleteRenting(107,3,2);
-            insertRenting(107,3,1, Timestamp.valueOf("2025-03-11 12:12:12"));
-            insertRenting(107,3,2,Timestamp.valueOf("2025-03-15 12:12:12"));
-            updateRenting(107,3,1);
-            updateRenting(107,3,1);
+            //deleteRenting(107,3,123456789);
+            //deleteRenting(107,3,123456790);
+            insertRenting(107,3,123456789);
+            insertRenting(107,3,123456790);
+            updateRenting(107,3,123456789);
+            updateRenting(107,3,123456789);
 
             rentings(3);
         } catch (Exception e) {
@@ -80,12 +80,12 @@ public class rentingService {
         }
     }
 
-    public static void insertRenting(int room_num, int hotel_id, int id, Timestamp check_in) throws Exception{
+    public static void insertRenting(int room_num, int hotel_id, int id) throws Exception{
 
 
         String updateSQL =
                 "INSERT INTO renting(room_num,hotel_id,id,check_in) " +
-                        "VALUES ('"+room_num+"','"+hotel_id+"','"+id+"','"+check_in+"')";
+                        "VALUES ('"+room_num+"','"+hotel_id+"','"+id+"',CURRENT_TIMESTAMP)";
 
         //instance of db_connection
         db_connection db = new db_connection();
