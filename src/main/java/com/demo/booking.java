@@ -38,5 +38,8 @@ public class booking {
         return this.leave_date;
     }
 
-
+    @Override
+    public String toString(){
+        return (room_num+", "+hotel_id+", "+id);
+    }
 }
