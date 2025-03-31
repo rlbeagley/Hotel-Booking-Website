@@ -40,8 +40,7 @@ public class bookingService {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
-                System.out.println("adding!");
-                System.out.println(rs.getInt("room_num"));
+
                 booking booking = new booking(
                         rs.getInt("room_num"),
                         rs.getInt("hotel_id"),
@@ -66,6 +65,7 @@ public class bookingService {
     }
 
     public static void deleteBooking(int room_num, int hotel_id, int id) throws Exception{
+        System.out.println("delete booking!");
         String sql = "DELETE FROM booking WHERE room_num='"+room_num+"' AND hotel_id = '"+hotel_id+"' AND id = '"+id+"'";
         //instance of db_connection
         db_connection db = new db_connection();
@@ -110,6 +110,8 @@ public class bookingService {
     }
 
     public static void updateBooking(int room_num, int hotel_id, int id, Date arrival_date, Date leave_date) throws Exception{
+        System.out.println("update booking!");
+
         String updateSQL = "UPDATE booking " +
                 "SET arrival_date = '"+arrival_date+"', leave_date = '"+leave_date+"' " +
                 "WHERE (room_num='"+room_num+"' AND hotel_id ='"+hotel_id+"' AND id ='"+id+"');";

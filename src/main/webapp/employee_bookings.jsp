@@ -1,7 +1,10 @@
 <%@ page import = "com.demo.employeeService"%>
 <%@ page import="java.util.List" %>
 <%@ page import = "com.demo.booking"%>
+<%@ page import= "com.demo. renting"%>
+<%@ page import= "com.demo. rentingService"%>
 <%@ page import = "com.demo.bookingService"%>
+<%@ page import="java.sql.Date" %>
 
 <%
     int hotelid=0;
@@ -18,6 +21,51 @@
                     response.sendRedirect("employee_landing_page.jsp");
                 }
     }
+
+    String arrivalStr = request.getParameter("arrival");
+    String leaveStr = request.getParameter("leave");
+
+
+    String formSubmitted = request.getParameter("formsubmitted");
+
+    String button = request.getParameter("action");
+    int roomNum = Integer.parseInt(request.getParameter("roomNum"));
+    //int hotelid = Integer.parseInt(request.getParameter("hotelid"));
+    int custid = Integer.parseInt(request.getParameter("id"));
+
+    if ("yes".equals(formSubmitted)) {
+       Date arrival = Date.valueOf(arrivalStr);
+       Date leave = Date.valueOf(leaveStr);
+
+        if ("update".equals(button)){
+            if((request.getParameter("arrival"))==null){
+                arrival = Date.valueOf(request.getParameter("oldarrival"));
+            } else{
+                arrival = Date.valueOf(request.getParameter("arrival"));
+            }
+            if((request.getParameter("leave"))==null){
+                leave = Date.valueOf(request.getParameter("oldleave"));
+            } else{
+                leave = Date.valueOf(request.getParameter("leave"));
+            }
+            bookingService.updateBooking(roomNum, hotelid, custid, arrival, leave);
+                    response.sendRedirect(request.getRequestURI() + "?hotelid=" + hotelid);
+        }
+
+    }
+        if (request.getMethod().equals("POST")){
+            System.out.println(button);
+            if("delete".equals(button)){
+                bookingService.deleteBooking(roomNum, hotelid, custid);
+            } else if ("renting".equals(button)){
+                out.println("working");
+
+                bookingService.deleteBooking(roomNum, hotelid, custid);
+                rentingService.insertRenting(roomNum, hotelid, custid);
+                response.sendRedirect(request.getRequestURI() + "?hotelid=" + hotelid);
+            }
+        }
+
 
     List<booking> bookings = bookingService.bookings(hotelid);
 %>
@@ -60,39 +108,53 @@
                     </div>
                     <div class="booking-buttons">
                         <div class="annoying-buttons">
-                            <form>
-                                <input type="hidden" name="required-info" value="from-db">
-                                <button class="button" type="submit" >Delete</button>
-                            </form>
-                            <form>
-                                <input type="hidden" name="required-info" value="from-db">
-                                <button class="button" type="submit" >Make Into Renting</button>
+                                <form method = "post">
+                                    <input type="hidden" name = "formsubmitted" value="yes">
+                                    <input type="hidden" name="roomNum" value="<%= b.getroomNum() %>">
+                                    <input type="hidden" name="id" value="<%= b.getID() %>">
+                                    <input type="hidden" name="hotelid" value="<%= b.gethotelID() %>">
+                                    <button class="button" type="submit" name="action" value = "delete" >Delete</button>
+                                </form>
+                                <form method = "post">
 
-                            </form>
+                                    <input type="hidden" name="roomNum" value="<%= b.getroomNum() %>">
+                                    <input type="hidden" name="id" value="<%= b.getID() %>">
+                                    <input type="hidden" name="hotelid" value="<%= b.gethotelID() %>">
+                                    <input type="hidden" name="arrival" value="<%= b.getarrivalDate() %>">
+                                    <input type="hidden" name="leave" value="<%= b.getleaveDate() %>">
+                                    <button class="button" type="submit" name="action" value = "renting" >Make Into Renting</button>
+                                </form>
+                        </div>
                     </div>
-                <!-- INCOMPLETE
-                need to add more hidden input types that will submit info of the booking that should be deleted,
-                assuming we can fill these with info from the DB?
-                hopefully
-                anyways add that, rn its just placeholders
-                -->
-                    <form class="changes"action="employee_bookings.jsp"> <!-- i hope this refreshes-->
+
+
+                    <form class="changes"action="employee_bookings.jsp" method = "post">
+
+                                    <input type="hidden" name="roomNum" value="<%= b.getroomNum() %>">
+                                    <input type="hidden" name="id" value="<%= b.getID() %>">
+                                    <input type="hidden" name="hotelid" value="<%= b.gethotelID() %>">
+                                    <input type="hidden" name="oldarrival" value="<%= b.getarrivalDate() %>">
+                                    <input type="hidden" name="oldleave" value="<%= b.getleaveDate() %>">
+                                    <input type="hidden" name = "formsubmitted" value="yes">
 
                         <div class="input-block">
-                            <label for="arrival">Change Arrival Date</label>
-                            <input type="date" id="arrival" name="arrival">
+                            <label for="arrival">Arrival Date</label>
+                            <input type="date" id="arrival" name="arrival" value= "<%= arrivalStr %>">
                         </div>
 
                         <div class="input-block">
-                            <label for="leave">Change Leave Date</label>
-                            <input type="date" id="leave" name="leave">
+                            <label for="leave">Leave Date</label>
+                            <input type="date" id="leave" name="leave" value= "<%= leaveStr %>">
                         </div>
 
-                        <button class="button" type="submit" >Submit Changes</button>
+
+                        <button class="button" type="submit" name = "action" value="update">Submit Changes</button>
+                        </div>
                     </form>
                 </div>
-            </div>
-        <%}%>
+                </div>
+                </div>
+            <%}%>
         <%}%>
     </div>
 </body>

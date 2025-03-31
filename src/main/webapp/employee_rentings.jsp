@@ -1,4 +1,7 @@
 <%@ page import = "com.demo.employeeService"%>
+<%@ page import="java.util.List" %>
+<%@ page import = "com.demo.renting"%>
+<%@ page import = "com.demo.rentingService"%>
 
 <%
     int hotelid=0;
@@ -14,6 +17,25 @@
                 response.sendRedirect("employee_landing_page.jsp");
             }
     }
+
+    if (request.getMethod().equals("POST")){
+        String button = request.getParameter("action");
+        int roomNum = Integer.parseInt(request.getParameter("roomNum"));
+        //int hotelid = Integer.parseInt(request.getParameter("hotelid"));
+        int custid = Integer.parseInt(request.getParameter("id"));
+
+        System.out.println(button);
+        if("delete".equals(button)){
+            rentingService.deleteRenting(roomNum, hotelid, custid);
+        } else if ("checkOut".equals(button)){
+            out.println("working");
+            rentingService.updateRenting(roomNum, hotelid, custid);
+        }
+        response.sendRedirect(request.getRequestURI() + "?hotelid=" + hotelid);
+    }
+
+
+    List<renting> rentings = rentingService.rentings(hotelid);
 %>
 
 <html>
@@ -37,48 +59,43 @@
                 </a>
             </div>
         </div>
-        <!-- this is the result of me poorly naming classes without considering reusability,
-        this is actually the booking-info blocks-->
-        <div class = "room-info-block">
-            <div class="info-text">
+        <% if (rentings.size() == 0) { %>
+            <h1 class="main-header">No Rentings Found</h1>
+        <% } else { %>
+            <% for (renting r : rentings) { %>
+                 <div class = "room-info-block">
+                      <div class="info-text">
+                           <h1 class="room-num"><%= "Room: "+r.getroomNum() %></h1>
 
-                <h1>Room 000</h1>
-                <h2>Customer ID: 123456789</h2>
-                <h2>Hotel ID: 0000200</h2>
-                <h3>Check-in: 00/00/0000</h3>
-                <h3>Check-out: 00/00/0000</h3>
+                           <h2 class="cust-id" ><%= "Customer ID: "+r.getID()%></h2>
+                           <h2 class="hotel-id"><%= "Hotel ID: " + r.gethotelId() %></h2>
+                           <h3 class= "cin"><%= "Check in: "+ r.getCheckIn() %></h3>
+                           <h3 class= "cout"><%= "Check out: "+ r.getCheckOut() %></h3>
+                      </div>
+                      <div class="booking-buttons">
+                           <div class="annoying-buttons">
+                                <form method = "post">
 
-            </div>
-            <div class="booking-buttons">
-                <div class="annoying-buttons">
-                    <form>
-                        <input type="hidden" name="required-info" value="from-db">
-                        <button class="button" type="submit" >Delete</button>
-                    </form>
+                                    <input type="hidden" name="roomNum" value="<%= r.getroomNum() %>">
+                                    <input type="hidden" name="id" value="<%= r.getID() %>">
+                                    <input type="hidden" name="hotelid" value="<%= r.gethotelId() %>">
+                                    <button class="button" type="submit" name="action" value = "delete" >Delete</button>
+                                </form>
+                                <form method = "post">
+                                    <input type="hidden" name="roomNum" value="<%= r.getroomNum() %>">
+                                    <input type="hidden" name="id" value="<%= r.getID() %>">
+                                    <input type="hidden" name="hotelid" value="<%= r.gethotelId() %>">
+                                    <button class="button" type="submit" name="action" value = "checkOut">Check Out</button>
+                                </form>
+
+
+                        </div>
+
+                    </div>
                 </div>
-                <!-- INCOMPLETE
-                need to add more hidden input types that will submit info of the booking that should be deleted,
-                assuming we can fill these with info from the DB?
-                hopefully
-                anyways add that, rn its just placeholders
-                -->
-                <form class="changes"action="employee_rentings.jsp"> <!-- i hope this refreshes-->
+        <%}%>
+        <%}%>
 
-                    <div class="input-block">
-                        <label for="checkin">Change Check-in</label>
-                        <input type="date" id="checkin" name="checkin">
-                    </div>
-
-                    <div class="input-block">
-                        <label for="checkout">Change Check-out</label>
-                        <input type="date" id="checkout" name="checkout">
-                    </div>
-
-                    <button class="button" type="submit" >Submit Changes</button>
-                </form>
-
-            </div>
-        </div>
     </div>
 </body>
 </html>

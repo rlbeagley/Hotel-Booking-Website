@@ -25,7 +25,7 @@ public class renting {
         return this.room_num;
     }
 
-    public int gethotelID(){
+    public int gethotelId(){
         return this.hotel_id;
     }
 
@@ -33,11 +33,13 @@ public class renting {
         return this.id;
     }
 
-    public Timestamp getcheckIn(){
+
+
+    public Timestamp getCheckIn(){
         return this.check_in;
     }
 
-    public Timestamp getcheckOut(){
+    public Timestamp getCheckOut(){
         return this.check_out;
     }
 

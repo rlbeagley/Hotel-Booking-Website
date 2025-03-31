@@ -37,8 +37,6 @@ public class rentingService {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
-                System.out.println("adding!");
-                System.out.println(rs.getInt("room_num"));
                 renting renting = new renting(
                         rs.getInt("room_num"),
                         rs.getInt("hotel_id"),
@@ -47,9 +45,6 @@ public class rentingService {
                         rs.getTimestamp("check_out"));
                 rentings.add(renting);
             }
-
-
-            System.out.println(rentings);
 
             rs.close();
             stmt.close();
@@ -81,7 +76,7 @@ public class rentingService {
     }
 
     public static void insertRenting(int room_num, int hotel_id, int id) throws Exception{
-
+        System.out.println("insert renting!");
 
         String updateSQL =
                 "INSERT INTO renting(room_num,hotel_id,id,check_in) " +
@@ -125,6 +120,7 @@ public class rentingService {
             con.close();
             db.close();
         } catch (Exception e) {
+            System.out.println("error updating Renting!");
             throw new Exception(e.getMessage());
         }
     }
