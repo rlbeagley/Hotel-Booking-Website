@@ -29,13 +29,16 @@
     String formSubmitted = request.getParameter("formsubmitted");
 
     String button = request.getParameter("action");
-    int roomNum = Integer.parseInt(request.getParameter("roomNum"));
-    //int hotelid = Integer.parseInt(request.getParameter("hotelid"));
-    int custid = Integer.parseInt(request.getParameter("id"));
+    int roomNum =0;
+    int custid=0;
+
 
     if ("yes".equals(formSubmitted)) {
        Date arrival = Date.valueOf(arrivalStr);
        Date leave = Date.valueOf(leaveStr);
+           roomNum = Integer.parseInt(request.getParameter("roomNum"));
+           hotelid = Integer.parseInt(request.getParameter("hotelid"));
+           custid = Integer.parseInt(request.getParameter("id"));
 
         if ("update".equals(button)){
             if((request.getParameter("arrival"))==null){
@@ -54,6 +57,10 @@
 
     }
         if (request.getMethod().equals("POST")){
+            roomNum = Integer.parseInt(request.getParameter("roomNum"));
+            hotelid = Integer.parseInt(request.getParameter("hotelid"));
+            custid = Integer.parseInt(request.getParameter("id"));
+
             System.out.println(button);
             if("delete".equals(button)){
                 bookingService.deleteBooking(roomNum, hotelid, custid);
@@ -109,7 +116,7 @@
                     <div class="booking-buttons">
                         <div class="annoying-buttons">
                                 <form method = "post">
-                                    <input type="hidden" name = "formsubmitted" value="yes">
+
                                     <input type="hidden" name="roomNum" value="<%= b.getroomNum() %>">
                                     <input type="hidden" name="id" value="<%= b.getID() %>">
                                     <input type="hidden" name="hotelid" value="<%= b.gethotelID() %>">
