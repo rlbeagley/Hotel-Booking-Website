@@ -19,7 +19,9 @@
             <button class = "button"type = "button">Employee</button>
         </a>
     </div>
-    <img class= "buildings" src="media/building_svg.svg" alt="SVG buildings">
+  </div>
+  <div class="buildings-container">
+     <img class= "buildings" src="media/building_svg.svg" alt="SVG buildings">
   </div>
 </body>
 </html>

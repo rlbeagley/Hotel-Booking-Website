@@ -70,10 +70,12 @@ body {
 
 /*this prob looks weird on diff computers ): need to fix */
 .buildings {
+    display: flex;
     width: 100%;
     height: auto;
     position: relative;
-    bottom: -31px;
+    justify-content: flex-end;
+
 }
 
 .container {
