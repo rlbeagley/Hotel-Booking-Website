@@ -135,7 +135,7 @@ public class bookingService {
                     bookedLeave=Date.valueOf("1900-10-12");
                 }
 
-                if(!(bookedLeave.before(arrival_date) || leave_date.after(bookedDate))){
+                if(!(bookedLeave.before(arrival_date) || bookedDate.after(leave_date))){
                     System.out.println("overlap");
                     System.out.println(arrival_date +","+leave_date+","+bookedDate+","+bookedLeave+", room: "+room_num);
                     if((rs.getString("room_num").equals(Integer.toString(room_num)))
