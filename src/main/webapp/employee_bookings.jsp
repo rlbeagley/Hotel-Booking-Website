@@ -156,10 +156,8 @@
 
 
                         <button class="button" type="submit" name = "action" value="update">Submit Changes</button>
-                        </div>
+
                     </form>
-                </div>
-                </div>
                 </div>
             <%}%>
         <%}%>
