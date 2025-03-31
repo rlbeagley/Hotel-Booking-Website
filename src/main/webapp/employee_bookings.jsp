@@ -34,8 +34,8 @@
 
 
     if ("yes".equals(formSubmitted)) {
-       Date arrival = Date.valueOf(arrivalStr);
-       Date leave = Date.valueOf(leaveStr);
+       Date arrival = Date.valueOf(request.getParameter("arrival"));
+       Date leave = Date.valueOf(request.getParameter("leave"));
            roomNum = Integer.parseInt(request.getParameter("roomNum"));
            hotelid = Integer.parseInt(request.getParameter("hotelid"));
            custid = Integer.parseInt(request.getParameter("id"));
