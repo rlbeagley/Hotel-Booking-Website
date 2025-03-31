@@ -1,3 +1,9 @@
+<%@ page import="java.util.List" %>
+<%@ page import = "com.demo.hotelService"%>
+
+<%
+    List<String> hotels = hotelService.hotels();
+%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -13,8 +19,9 @@
                 <h1 class="main-header">Employee Login</h1>
                 <label for="hotelid">Hotel ID</label><br>
                 <select name="hotelid" id="hotelid">
-                    <!-- get from DB, this is temporary-->
-                    <option value="3">3</option>
+                    <% for (String hotel : hotels) { %>
+                         <option value= "<%= hotel %>"><%= hotel %></option>
+                    <% } %>
                 </select><br>
 
                 <label for="name">Name</label><br>
