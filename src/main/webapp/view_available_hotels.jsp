@@ -55,7 +55,7 @@
                     <label for="area">Area</label>
                     <select name="area" id="area">
                         <% for (String city : cities) { %>
-                            <option value= "<%= city %>"><%= city %></option>
+                            <option value= "<%= city %>" <%= city.equals(area) ? "selected" : "" %>><%= city %></option>
                         <% } %>
                     </select>
                 </div>
